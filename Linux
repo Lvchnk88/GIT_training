@@ -1,0 +1,55 @@
+--------------------------------------------------------------------------
+Настройка и сертификация HAProxy
+
+cat /etc/haproxy/haproxy.cfg
+nano /etc/haproxy/haproxy.cfg
+
+Проверка работы HAProxy
+haproxy -f /etc/haproxy/haproxy.cfg -c
+
+sudo service haproxy restart 
+
+haproxy reload
+
+openssl rsa -in elwood.key -out server.key
+openssl rsa -in server.crt -out server1.crt
+openssl rsa -in server.pem -out server.pem
+cat server.crt server.key > server.pem
+
+openssl pkcs12 -in BurnettCert.pfx -clcerts -nokeys -out server.crt
+openssl pkcs12 -in BurnettCert.pfx -nocerts -out server.key
+cat server.crt server1.key > server.pem
+
+--------------------------------------------------------------------------
+Установка команд
+
+Меняем у рута и у пользователя
+
+location     ~/.bashrc
+
+# Custom aliases
+alias l='ls -a'   
+alias ll='ls -l'  
+alias la='ls -la'  
+
+Проверка работы HAProxy
+haproxy -f /etc/haproxy/haproxy.cfg -c
+
+sudo service haproxy restart
+
+--------------------------------------------------------------------------
+Конвертация сертификатов
+
+cat skyhawk.key skyhawk.crt > server.pem
+
+--------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
